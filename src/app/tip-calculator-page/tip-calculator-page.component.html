@@ -1,0 +1,129 @@
+<article>
+  <header class="header">
+    <img ngSrc="logo.svg" priority width="87" height="54" alt="logo" />
+  </header>
+
+  <form [formGroup]="calculatorForm" class="calculator">
+    <!--    Bill-->
+    <fieldset class="bill">
+      <div class="title">
+        <legend>Bill</legend>
+
+        @if (invalidTouchedOrDirtyField("bill")) {
+          @if (getField("bill")?.errors?.["min"]) {
+            <p>Can't be negative</p>
+          } @else if (getField("bill")?.errors?.["required"]) {
+            <p>Bill required</p>
+          }
+        }
+      </div>
+
+      <label>
+        <img ngSrc="icon-dollar.svg" width="11" height="17" alt="dollar icon" />
+        <input
+          [ngClass]="{
+            'outline-2 outline-orange-400': invalidTouchedOrDirtyField('bill'),
+          }"
+          placeholder="0"
+          type="number"
+          formControlName="bill"
+        />
+      </label>
+    </fieldset>
+
+    <!--    Tips-->
+    <fieldset class="tips">
+      <legend>Select Tip %</legend>
+
+      <div>
+        @for (tip of tips; track $index) {
+          <label
+            class="tip"
+            [ngClass]="{
+              'bg-green-200 text-green-900': selectedTip() === tip,
+              'bg-green-900 text-white': selectedTip() !== tip,
+            }"
+            (click)="onTipClick(tip)"
+          >
+            <input
+              type="radio"
+              name="tip"
+              [id]="`tip${$index}`"
+              formControlName="tip"
+            />
+            {{ tip | percent }}
+          </label>
+        }
+
+        <label>
+          <input
+            [ngClass]="{
+              'outline-2 outline-orange-400':
+                invalidTouchedOrDirtyField('customTip'),
+            }"
+            class="placeholder:text-grey-550 text-center"
+            (focus)="onCustomTipFocus()"
+            id="custom"
+            type="number"
+            placeholder="Custom"
+            name="tip"
+            formControlName="customTip"
+          />
+        </label>
+      </div>
+    </fieldset>
+
+    <!--        People-->
+    <fieldset class="people">
+      <div class="title">
+        <legend>Number of People</legend>
+
+        @if (invalidTouchedOrDirtyField("people")) {
+          @if (getField("people")?.errors?.["min"]) {
+            <p>Can't be zero or negative</p>
+          } @else if (getField("people")?.errors?.["required"]) {
+            <p>Number of people required</p>
+          }
+        }
+      </div>
+
+      <label>
+        <img ngSrc="icon-person.svg" width="13" height="16" alt="dollar icon" />
+        <input
+          [ngClass]="{
+            'outline-2 outline-orange-400':
+              invalidTouchedOrDirtyField('people'),
+          }"
+          placeholder="0"
+          type="number"
+          formControlName="people"
+        />
+      </label>
+    </fieldset>
+
+    <!--    Summary-->
+    <div class="summary">
+      <div class="item">
+        <div>
+          <h1>Tip Amount</h1>
+          <h2>/ person</h2>
+        </div>
+        <span>{{ tipPerPerson() | currency }}</span>
+      </div>
+      <div class="item">
+        <div>
+          <h1>Total</h1>
+          <h2>/ person</h2>
+        </div>
+        <span>{{ totalPerPerson() | currency }}</span>
+      </div>
+      <button
+        (click)="reset()"
+        [disabled]="calculatorForm.invalid"
+        class="reset-button"
+      >
+        RESET
+      </button>
+    </div>
+  </form>
+</article>

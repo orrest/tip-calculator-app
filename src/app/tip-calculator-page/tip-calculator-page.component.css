@@ -1,0 +1,70 @@
+@reference "../../styles.css";
+
+article {
+  @apply flex flex-col;
+}
+
+.header {
+  @apply self-center py-[3.125rem];
+}
+
+.calculator {
+  @apply flex flex-col gap-8 rounded-2xl bg-white px-6 py-8;
+
+  .bill,
+  .people {
+    @apply flex flex-col;
+
+    .title {
+      @apply flex flex-row justify-between;
+
+      p {
+        @apply text-orange-400;
+      }
+    }
+
+    label {
+      @apply relative flex flex-col justify-center;
+
+      img {
+        @apply absolute ml-4;
+      }
+    }
+  }
+}
+
+.tips {
+  @apply flex flex-col;
+
+  div {
+    @apply grid grid-cols-[repeat(2,1fr)] grid-rows-3 gap-4;
+  }
+
+  .tip {
+    @apply text-preset-3 rounded-[5px] px-4 py-2 text-center hover:cursor-pointer;
+  }
+}
+
+.summary {
+  @apply flex flex-col gap-8 rounded-[15px] bg-green-900 p-6;
+
+  h1 {
+    @apply p-0 text-white;
+  }
+
+  h2 {
+    @apply text-preset-6 text-grey-400;
+  }
+
+  span {
+    @apply text-preset-2 text-green-400;
+  }
+
+  .item {
+    @apply flex flex-row justify-between;
+  }
+
+  .reset-button {
+    @apply text-preset-4 disabled:bg-green-750 rounded-[5px] bg-green-400 px-8 py-2 text-green-900 hover:cursor-pointer disabled:text-green-800;
+  }
+}

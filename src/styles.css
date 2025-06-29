@@ -1,1 +1,172 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-space-mono: "Space mono", monospace;
+
+  --text-preset-1: 48px;
+  --text-preset-1--font-weight: bold;
+  --text-preset-1--line-height: 71px;
+  --text-preset-1--letter-spacing: -1px;
+
+  --text-preset-2: 32px;
+  --text-preset-2--font-weight: bold;
+  --text-preset-2--line-height: 47px;
+  --text-preset-2--letter-spacing: -0.67px;
+
+  --text-preset-3: 24px;
+  --text-preset-3--font-weight: bold;
+  --text-preset-3--line-height: 36px;
+  --text-preset-3--letter-spacing: 0px;
+
+  --text-preset-4: 20px;
+  --text-preset-4--font-weight: bold;
+  --text-preset-4--line-height: 30px;
+  --text-preset-4--letter-spacing: 0px;
+
+  --text-preset-5: 16px;
+  --text-preset-5--font-weight: bold;
+  --text-preset-5--line-height: 24px;
+  --text-preset-5--letter-spacing: 0px;
+
+  --text-preset-6: 13px;
+  --text-preset-6--font-weight: bold;
+  --text-preset-6--line-height: 19px;
+  --text-preset-6--letter-spacing: 0px;
+
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  --color-grey-600: #3d6666;
+  --color-grey-550: #547878;
+  --color-grey-500: #5e7a7d;
+  --color-grey-400: #7f9d9f;
+  --color-grey-300: #9ebbbd;
+  --color-grey-200: #c5e4e7;
+  --color-grey-50: #f3f9fa;
+
+  --color-green-900: #00474b;
+  --color-green-800: #085c61;
+  --color-green-750: #0d686d;
+  --color-green-400: #26c2ae;
+  --color-green-200: #9fe8df;
+
+  --color-orange-400: #e17052;
+}
+
+@layer base {
+  /* Box sizing rules */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    font-family: var(--font-space-mono), monospace;
+  }
+
+  /* Prevent font size inflation */
+  html {
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+  }
+
+  /* Remove default margin in favour of better control in authored CSS */
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  figure,
+  blockquote,
+  dl,
+  dd {
+    margin-block-end: 0;
+  }
+
+  /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+  ul[role="list"],
+  ol[role="list"] {
+    list-style: none;
+  }
+
+  /* Set core body defaults */
+  body {
+    min-height: 100vh;
+    line-height: 1.5;
+  }
+
+  /* Set shorter line heights on headings and interactive elements */
+  h1,
+  h2,
+  h3,
+  h4,
+  button,
+  input,
+  label {
+    line-height: 1.1;
+  }
+
+  /* Balance text wrapping on headings */
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+
+  /* A elements that don't have a class get default styles */
+  a:not([class]) {
+    text-decoration-skip-ink: auto;
+    color: currentColor;
+  }
+
+  /* Make images easier to work with */
+  img,
+  picture {
+    max-width: 100%;
+    display: block;
+  }
+
+  /* Inherit fonts for inputs and buttons */
+  input,
+  button,
+  textarea,
+  select {
+    font-family: inherit;
+    font-size: inherit;
+  }
+
+  /* Make sure textareas without a rows attribute are not tiny */
+  textarea:not([rows]) {
+    min-height: 10em;
+  }
+
+  /* Anything that has been anchored to should have extra scroll margin */
+  :target {
+    scroll-margin-block: 5ex;
+  }
+
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  input[type="radio"] {
+    display: none;
+  }
+
+  input {
+    @apply bg-grey-50 text-preset-3 placeholder:text-grey-300 w-full rounded-[5px] px-4 py-2 text-right text-green-900 outline-green-400;
+  }
+
+  legend {
+    @apply text-grey-500 text-preset-5 pb-2;
+  }
+}
