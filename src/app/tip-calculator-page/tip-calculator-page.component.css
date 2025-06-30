@@ -1,70 +1,78 @@
 @reference "../../styles.css";
 
 article {
-  @apply flex flex-col;
+  @apply flex flex-col items-center;
 }
 
 .header {
-  @apply self-center py-[3.125rem];
+  @apply self-center py-[3.125rem] md:pt-[10.1875rem];
 }
 
 .calculator {
-  @apply flex flex-col gap-8 rounded-2xl bg-white px-6 py-8;
+  @apply flex flex-col gap-8 rounded-2xl bg-white px-6 py-8 sm:max-w-[38rem] sm:gap-10 sm:rounded-3xl md:max-h-[30rem] md:max-w-[57.5rem] md:flex-row md:gap-12 md:p-8;
 
-  .bill,
-  .people {
-    @apply flex flex-col;
+  .fields {
+    @apply flex flex-col gap-8 md:w-1/2 md:gap-10;
 
-    .title {
-      @apply flex flex-row justify-between;
+    .bill,
+    .people {
+      @apply flex flex-col;
 
-      p {
-        @apply text-orange-400;
+      .title {
+        @apply flex flex-row justify-between;
+
+        p {
+          @apply text-orange-400;
+        }
+      }
+
+      label {
+        @apply relative flex flex-col justify-center;
+
+        img {
+          @apply absolute ml-4;
+        }
       }
     }
 
-    label {
-      @apply relative flex flex-col justify-center;
+    .tips {
+      @apply flex flex-col;
 
-      img {
-        @apply absolute ml-4;
+      div {
+        @apply grid grid-cols-[repeat(2,1fr)] grid-rows-3 gap-4 sm:grid-cols-[repeat(3,1fr)] sm:grid-rows-2;
+      }
+
+      .tip {
+        @apply text-preset-3 rounded-[5px] px-4 py-2 text-center hover:cursor-pointer hover:bg-green-200 hover:text-green-900;
       }
     }
   }
-}
 
-.tips {
-  @apply flex flex-col;
+  .summary {
+    @apply flex flex-col justify-between gap-8 rounded-[15px] bg-green-900 p-6 sm:gap-4 md:w-1/2;
 
-  div {
-    @apply grid grid-cols-[repeat(2,1fr)] grid-rows-3 gap-4;
-  }
+    h1 {
+      @apply p-0 text-white;
+    }
 
-  .tip {
-    @apply text-preset-3 rounded-[5px] px-4 py-2 text-center hover:cursor-pointer;
-  }
-}
+    h2 {
+      @apply text-preset-6 sm:text-preset-5 text-grey-400;
+    }
 
-.summary {
-  @apply flex flex-col gap-8 rounded-[15px] bg-green-900 p-6;
+    span {
+      @apply text-preset-2 sm:text-preset-1 text-green-400;
+    }
 
-  h1 {
-    @apply p-0 text-white;
-  }
+    .items {
+      @apply flex flex-col gap-6;
+    }
 
-  h2 {
-    @apply text-preset-6 text-grey-400;
-  }
+    .item {
+      @apply flex flex-row items-center justify-between;
+    }
 
-  span {
-    @apply text-preset-2 text-green-400;
-  }
-
-  .item {
-    @apply flex flex-row justify-between;
-  }
-
-  .reset-button {
-    @apply text-preset-4 disabled:bg-green-750 rounded-[5px] bg-green-400 px-8 py-2 text-green-900 hover:cursor-pointer disabled:text-green-800;
+    .reset-button {
+      @apply text-preset-4 disabled:bg-green-750 rounded-[5px] bg-green-400 px-8 py-2 text-green-900 hover:cursor-pointer hover:bg-green-200 disabled:text-green-800;
+    }
   }
 }

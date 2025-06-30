@@ -170,3 +170,9 @@
     @apply text-grey-500 text-preset-5 pb-2;
   }
 }
+
+@layer utilities {
+  .error-input {
+    @apply outline-2 outline-orange-400;
+  }
+}

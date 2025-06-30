@@ -53,8 +53,16 @@ export class TipCalculatorPageComponent {
       next: () => {
         if (this.calculatorForm.valid) {
           const bill = this.getField('bill')!.value;
-          const tipPercent = this.getField('tip')!.value;
           const people = this.getField('people')!.value;
+
+          let tipPercent = this.getField('tip')?.value;
+          if (!tipPercent) {
+            tipPercent = this.getField('customTip')?.value / 100;
+
+            if (!tipPercent) {
+              tipPercent = 0;
+            }
+          }
 
           const tip = tipPercent * bill;
 
@@ -101,6 +109,9 @@ export class TipCalculatorPageComponent {
 
   reset() {
     this.calculatorForm.reset();
+
     this.selectedTip.set(undefined);
+    this.tipPerPerson.set(0);
+    this.totalPerPerson.set(0);
   }
 }
